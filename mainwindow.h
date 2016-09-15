@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+private slots:
+    void valueChanged(int i);
 };
 
 #endif // MAINWINDOW_H
