@@ -19,6 +19,7 @@ private:
     Ui::MainWindow *ui;
 
 private slots:
+    void textChanged(QString text);
     void valueChanged(int i);
 };
 
