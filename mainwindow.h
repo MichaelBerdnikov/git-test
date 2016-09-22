@@ -17,9 +17,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    void updateFile() const;
 
 private slots:
-    void textChanged(QString text);
+    void textChanged(const QString& text);
     void valueChanged(int i);
 };
 

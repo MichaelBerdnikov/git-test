@@ -21,13 +21,20 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::valueChanged(int i)
+void MainWindow::updateFile() const
 {
     QFile file("name.txt");
     file.open(QIODevice::WriteOnly);
     QDataStream stream(&file);
     stream << ui->firstSpinBox->text() << ui->comboBox->currentText() << ui->secondSpinBox->text();
-    int temp1 = ui->firstSpinBox->text().toInt();
+    file.close();
+}
+
+void MainWindow::valueChanged(int i)
+{
+    updateFile();
+
+    /*int temp1 = ui->firstSpinBox->text().toInt();
     int temp2 = ui->secondSpinBox->text().toInt();
     int result;
     if (ui->comboBox->currentText() == "+") {
@@ -40,13 +47,13 @@ void MainWindow::valueChanged(int i)
         result = temp1 * temp2;
     }
     QString res = QString::number(result);
-    stream << ' = ' << res;
-    file.close();
+    stream << ' = ' << res;*/
+
 }
 
-void MainWindow::textChanged(QString text)
+void MainWindow::textChanged(const QString& text)
 {
-    text = ui->comboBox->currentText();
+    updateFile();
 }
 
 
